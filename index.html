@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Midnight Visitor – a story for Miss Kritee</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:'Fredoka','Trebuchet MS',sans-serif;color:#5a2440;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;
+padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));
+background:radial-gradient(2px 2px at 12% 18%,#fff,transparent),radial-gradient(2px 2px at 82% 12%,#fff3b8,transparent),radial-gradient(1.5px 1.5px at 40% 8%,#fff,transparent),radial-gradient(2px 2px at 92% 55%,#fff,transparent),radial-gradient(1.5px 1.5px at 8% 70%,#fff3b8,transparent),radial-gradient(2px 2px at 60% 88%,#fff,transparent),linear-gradient(#0f1233,#2a1a52 70%,#4a2250)}
+#book{position:relative;width:min(92vw,440px);height:min(78vh,680px);height:min(calc(100svh - 118px),680px);perspective:1800px;margin-bottom:14px}
+.leaf{position:absolute;inset:0;background:#fff8fb;border-radius:6px 16px 16px 6px;box-shadow:0 14px 40px rgba(0,0,0,.55);transform-origin:left center;transition:transform 1s cubic-bezier(.5,.1,.3,1);-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.leaf.turned{transform:rotateY(-180deg)}
+.pg{position:absolute;inset:0;overflow:auto;border-radius:inherit;padding:22px 20px 30px}
+.cover{background:linear-gradient(135deg,#9b2f5d,#d34f7d);border-left:14px solid #6d1f40}
+.cv{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;color:#ffe8b0}
+.cv h1{font:400 clamp(2.2rem,11vw,3rem)/1.1 Pacifico,cursive;text-shadow:0 3px 0 #6d1f40}
+.sub{font-size:1.15rem}.fine{font-size:.85rem;opacity:.8}.tg{font-weight:600;color:#fff}
+.ch{font:400 1.55rem/1.2 Pacifico,cursive;color:#c2456f;margin-bottom:10px}
+.t{line-height:1.6;font-size:1.05rem;margin-bottom:.8em}
+.sc{font-size:3rem;text-align:center;margin:4px 0 12px;min-height:3.8rem}
+.rv{opacity:0}.leaf.show .rv{animation:up .7s both;animation-delay:calc(var(--i)*.35s)}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.fl,.sw,.tw{display:inline-block}.fl{animation:fl 2s ease-in-out infinite}.sw{animation:sw 1s ease-in-out infinite}.tw{animation:tw 2s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-8px)}}@keyframes sw{50%{transform:rotate(-7deg)}}@keyframes tw{50%{opacity:.3}}
+.track{position:relative;height:3.6rem;overflow:hidden;margin-bottom:12px}.wk{position:absolute;font-size:3rem;animation:wk 5s linear infinite}
+@keyframes wk{from{left:-15%}to{left:100%}}
+.b{font:inherit;font-weight:600;background:#ff6f9f;color:#fff;border:0;border-radius:99px;padding:12px 26px;box-shadow:0 5px 0 #c2456f;cursor:pointer}
+.b:active{transform:translateY(4px);box-shadow:0 1px 0 #c2456f}
+.lk{font:inherit;background:none;border:0;color:#a84d72;text-decoration:underline;cursor:pointer;margin-left:10px}
+.row{display:flex;gap:12px;align-items:center;justify-content:center;margin:12px 0;position:relative}
+.nb{background:#c9bfe8;box-shadow:0 5px 0 #8f82bd}
+.cd{display:flex;gap:12px;align-items:center;background:#ffeef4;border-radius:14px;padding:10px 12px;margin-bottom:10px;line-height:1.4}.cd span{font-size:2.2rem}
+.tc{padding-left:1.3em;line-height:1.6;margin-bottom:10px}
+.mt{height:22px;background:#f6d3e0;border-radius:99px;overflow:hidden;margin:14px 0}#mf{height:100%;width:0;background:linear-gradient(90deg,#ff8fb3,#ff6f9f);transition:width .4s}
+.cdl{display:flex;justify-content:center;gap:8px;margin:16px 0}.cn{background:none;border:0;font-size:2rem;cursor:pointer;line-height:1.1;padding:4px}.cn span{display:block}.cn i{font-style:normal}
+details{background:#ffeef4;border-radius:12px;padding:10px 14px;margin-bottom:8px}summary{font-weight:600;cursor:pointer}details p{margin-top:6px;line-height:1.5}
+.ltr{background:#ffeef4;border-radius:14px;padding:14px 14px 4px}.sg{font:400 1.3rem Pacifico,cursive;text-align:right;color:#a84d72}
+.cert{border:4px double #c2456f;border-radius:12px;padding:16px;text-align:center;line-height:1.5;position:relative}.cert h3{font:400 1.4rem Pacifico,cursive;color:#c2456f;margin:6px 0}.dt{font-size:.9rem;opacity:.8}
+.stp{display:inline-block;margin-top:10px;border:3px solid #d33;color:#d33;font-weight:600;padding:2px 12px;border-radius:6px;transform:rotate(-12deg);opacity:0}
+.show .stp{animation:sl .5s 2s both}@keyframes sl{from{opacity:0;transform:rotate(-12deg) scale(3)}to{opacity:1;transform:rotate(-12deg) scale(1)}}
+#nav{display:flex;align-items:center;gap:14px;color:#ffd88a}.closed #nav{visibility:hidden}
+#nav button{font:inherit;font-weight:600;background:#ff7aa8;color:#2a1240;border:0;border-radius:99px;padding:11px 22px;box-shadow:0 4px 0 rgba(0,0,0,.35);cursor:pointer}
+#nav button:disabled{opacity:.35;cursor:default}
+.cf{position:fixed;top:-20px;width:10px;height:14px;border-radius:3px;z-index:999;pointer-events:none;animation:fall linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+button:focus-visible,summary:focus-visible{outline:3px solid #ffd166;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1!important;animation:none!important}.fl,.sw,.tw,.wk,.cf{animation:none!important}.leaf{transition-duration:.01s}}
+</style>
+</head>
+<body class="closed">
+<div id="book">
+  <section class="leaf cover" id="cov" style="z-index:200"><div class="pg cv">
+    <div class="fl" style="font-size:2.6rem">🕴️🌹🎁</div>
+    <h1>The Midnight Visitor</h1>
+    <p class="sub">A Totally True* Story for Miss Kritee</p>
+    <p class="fine">*lawyers prefer “mostly true”</p>
+    <p class="tg" id="tg"></p>
+    <button class="b" id="op">Open the book</button>
+    <p class="fine" id="vn"></p>
+  </div></section>
+</div>
+<div id="nav"><button id="pv">‹ Back</button><span id="ind"></span><button id="nx">Next ›</button></div>
+<script>
+(function(){
+const $=(s,r)=>(r||document).querySelector(s),R=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let V=0,cur=-1,L=[],ok={},inited={},P=[];
+try{V=+localStorage.getItem('kv')||0}catch(e){}
+const bk=$('#book'),cov=$('#cov'),nx=$('#nx'),pv=$('#pv'),ind=$('#ind');
+const T=(...a)=>a.map(x=>'<p class="t rv">'+x+'</p>').join('');
+const card=(e,n,t)=>'<div class="cd rv"><span>'+e+'</span><div><b>'+n+'</b><br>'+t+'</div></div>';
+const TAG=['First edition','Second edition: now with 12% more nonsense','Director’s cut','Collector’s edition (signed by Bear)','Okay, you really love this book 😂'];
+const BON=['Today’s official compliment: you make ordinary days feel like weekends.','Breaking news: Panda has finished the snacks again. Suspect: Panda.','Fun fact: Bear has been practicing a birthday dance. It is not good. It is very sincere.','Reminder: drink water, eat cake, and ignore anyone who says cake calories exist.','The Person in Black says hi from behind the plant. He is still there.','Your smile has just been renewed for another year. No paperwork needed.','Today’s wisdom: a day with cake is never a bad day.','Secret: nobody has ever been appreciated this much in a book before.'];
+const burst=()=>{if(R)return;const c=['#ff6f9f','#ffd166','#8fd3ff','#b8f2c9','#c9a7ff','#fff'];for(let k=0;k<70;k++){const d=document.createElement('i');d.className='cf';d.style.cssText='left:'+Math.random()*100+'vw;background:'+c[k%6]+';animation-duration:'+(2+Math.random()*2.5)+'s;animation-delay:'+Math.random()*.6+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),6000)}};
+
+const pages=()=>[
+{h:'Before We Begin',b:'<div class="sc fl">📖</div>'+T('Dear Reader (Miss Kritee),','This book contains 40% sweetness, 30% nonsense and 30% cake.','Side effects: smiling for no reason, laughing alone, and suddenly feeling like the main character.','Please do not read while drinking tea. The Management is not responsible for any tea that comes out of your nose.')},
+{h:'Chapter 1 · Midnight',b:'<div class="sc"><span class="tw">🌙</span> <span class="tw" style="animation-delay:.7s">⭐</span> 🏠 <span class="fl">🐈</span></div>'+T('It was 11:59 PM. The whole town was asleep. The street dogs were asleep. Even the WiFi was asleep.','Only one person was awake: a mysterious figure in black, carrying a gift and a rose, rehearsing his lines in front of a very confused cat.')},
+{h:'Chapter 2 · The Rehearsal',b:'<div class="sc"><span class="fl">🕴️</span> 💬</div>'+T('He had one job: say happy birthday. So he practiced.','“Hi.” → <b>too short</b>','“Hello, madam.” → <b>too formal</b>','“Yo.” → <b>too yo</b>','“Happy Birthday!” → <b>okay… fine</b>','The cat gave the performance 3 stars. The cat gives everyone 3 stars.')},
+{h:'Chapter 3 · The Walk',b:'<div class="track"><span class="wk">🕴️</span></div>'+T('Then came the walk. Obstacles faced on the way: one doormat that appeared from nowhere, one lamp post (he said sorry to it), and his own shoelace.','Dignity: lost. Gift: still safe. Priorities: correct.')},
+{h:'Chapter 4 · Knock Knock',g:1,b:'<div class="sc"><span class="sw">🚪</span> <span class="fl">🕴️</span></div>'+T('He reached the door. His heart was going dhak-dhak at 200 beats per minute.','He knocked once. Then he panicked and hid behind a plant. Then he came back.','Now it’s up to you. Do you open the door?')+'<div class="row rv"><button class="b" id="y">Yes</button><button class="b nb" id="n">No</button></div><p class="t rv" id="m"></p>',
+ i:(e,ok)=>{const y=$('#y',e),n=$('#n',e),m=$('#m',e),pg=$('.pg',e);let c=0;
+  y.onclick=()=>{m.textContent='Great choice! Behind the door, a person in black exhaled for the first time in four minutes.';n.style.visibility='hidden';ok();burst()};
+  const d=ev=>{ev.preventDefault();n.style.position='absolute';n.style.left=Math.random()*(pg.clientWidth-90)+'px';n.style.top=(120+Math.random()*(pg.clientHeight-200))+'px';m.textContent=['Not allowed 🙈','Only Yes works tonight','Nice try!'][c++%3]};
+  ['pointerenter','touchstart','click'].forEach(v=>n.addEventListener(v,d,{passive:false}))}},
+{h:'Chapter 5 · The Cast',b:T('Meet the characters:')+card('🕴️','The Person in Black','Job: professional nervous wreck. Skills: overthinking, rehearsing, carrying gifts. Weakness: eye contact.')+card('🐻','Bear','Job: official hugger. Skills: snacks. Weakness: more snacks.')+card('🐼','Panda','Job: silent judging. Skills: napping and eating. Weakness: also snacks.')},
+{h:'Chapter 6 · Terms & Conditions',g:1,b:T('Please read carefully. Nobody does, but please.')+'<ol class="tc rv"><li>You are not allowed to be sad today.</li><li>Birthday cake has zero calories. This is a law.</li><li>You must smile at least 47 times before bedtime.</li><li>The Person in Black is not responsible for any extra happiness caused by this book.</li></ol><div class="row rv"><button class="b" id="a">I accept</button><button class="lk" id="d">Decline</button></div><p class="t rv" id="m"></p>',
+ i:(e,ok)=>{$('#a',e).onclick=()=>{ok();burst()};$('#d',e).onclick=()=>$('#m',e).textContent='Declining is not available in your region (Earth).'}},
+{h:'Chapter 7 · Fun Facts',b:'<div class="sc fl">🔬</div>'+T('<b>Fact 1:</b> Kritee makes ordinary days brighter. Scientists measured it: +37%. Sample size: one (me).','<b>Fact 2:</b> Her ideas are so revolutionary that the old ideas filed a complaint.','<b>Fact 3:</b> Her sweet creations were rated 11 out of 10 by Bear and Panda, who are very hard to impress (unless snacks are involved).','<b>Fact 4:</b> Her smile has been blamed for several good moods in the area. The investigation is ongoing.')},
+{h:'Chapter 8 · Smile-O-Meter 3000',g:1,b:T('Our scientists built a machine to measure her smile. Tap the button and see.')+'<div class="mt rv"><div id="mf"></div></div><p class="t rv" id="mm">Waiting for a smile…</p><div class="row rv"><button class="b" id="sm">Smile 😊</button></div>',
+ i:(e,ok)=>{let c=0;const f=$('#mf',e),m=$('#mm',e);$('#sm',e).onclick=()=>{c++;f.style.width=Math.min(c*20,100)+'%';if(c<5)m.textContent=['Warming up…','Better…','Oh wow…','Almost there…'][c-1];else if(c==5){m.textContent='MAX! Smile level: 100%';ok()}else{m.textContent='💥 ERROR: the meter cannot handle this smile. Please buy a bigger meter.';burst()}}}},
+{h:'Chapter 9 · The Cake Incident',b:'<div class="sc"><span class="fl">🎂</span> <span class="fl" style="animation-delay:.5s">🐼</span> <span class="fl" style="animation-delay:.9s">🐻</span></div>'+T('Bear brought a cake. Panda ate half of it before it arrived.','Panda says this was “quality control”. Bear says the other half was also quality control.','The Person in Black was told to say nothing and just look at the ceiling. The cake survived. Barely. Bravely.')},
+{h:'Chapter 10 · Make a Wish',g:1,b:T('Time for the most serious part. Make a wish, then tap each flame to blow it out.')+'<div class="cdl rv">'+'<button class="cn"><span>🔥</span><i>🕯️</i></button>'.repeat(5)+'</div><p class="t rv" id="cm">Take your time. Wishes don’t like being rushed.</p>',
+ i:(e,ok)=>{let n=5;e.querySelectorAll('.cn').forEach(b=>b.onclick=()=>{if(b.dataset.o)return;b.dataset.o=1;b.firstChild.textContent='💨';if(!--n){burst();$('#cm',e).innerHTML='Wish received. Processing… 98%…<br>Wishes take 3 to 5 business birthdays to arrive, but yours has priority shipping.';ok()}})}},
+{h:'Chapter 11 · FAQ',b:T('Frequently Asked Questions (tap to open):')+'<details class="rv"><summary>Who is the Person in Black?</summary><p>Classified. Also very shy. Also still hiding behind the plant.</p></details><details class="rv"><summary>Why did he come at midnight?</summary><p>Daytime had too many people, and he had only one gift and zero confidence.</p></details><details class="rv"><summary>Is this book official?</summary><p>Certified by Bear (brown) and Panda (not brown).</p></details><details class="rv"><summary>Can I read it again?</summary><p>Please do. Warning: it changes a little every time. The Person in Black keeps adding things.</p></details>'},
+{h:'Chapter 12 · The Letter',b:'<div class="sc fl">💌</div>'+T('Okay. Jokes aside for thirty seconds.')+'<div class="ltr">'+T('Dear Kritee,','Today is all about you. I hope your day is full of cake, laughter, and everyone you actually care about around you (leaving out the ones who don’t matter at all, like me).','You’re a person who makes ordinary days feel brighter with your creativity, your great revolutionary thoughts and ideas, and your sweet creations. Never lose that smile.','Make a big wish. You deserve every one of them to come true.','Happy wala Birthday!')+'<p class="sg rv">— From 🥲</p></div>'},
+{h:'The Certificate',b:'<div class="cert rv"><div style="font-size:2.4rem">🏅</div><h3>Official Certificate of Being Awesome</h3><p>Awarded to <b>Miss Kritee</b> for outstanding services to making ordinary days brighter.</p><p class="dt">Issued on '+new Date().toLocaleDateString(undefined,{day:'numeric',month:'long',year:'numeric'})+'</p><p>Signed: The Person in Black (shaky hand), Bear 🐾, Panda 🐾 (snack-stained)</p><span class="stp">APPROVED</span></div>'},
+{h:'Bonus Page · Read #'+V,b:'<div class="sc fl">🎁</div>'+T('You came back! The Person in Black is thrilled. (He is behind the plant.)',BON[(V-1)%BON.length])},
+{h:'The End (Not Really)',b:'<div class="sc fl">📕</div>'+T('Close the book gently. Then open it again whenever you need a smile. It changes a little every time.','Happy wala Birthday, Kritee! 🎂')+'<div class="row rv"><button class="b" id="cl">Close the book</button></div>',i:e=>{$('#cl',e).onclick=close}}
+];
+
+function tag(){$('#tg').textContent=TAG[Math.min(V,TAG.length-1)];$('#vn').textContent=V?'Welcome back! This will be read #'+(V+1):'Tap to open'}
+function build(){L.forEach(x=>x.remove());L=P.map((p,k)=>{const s=document.createElement('section');s.className='leaf';s.style.zIndex=100-k;s.innerHTML='<div class="pg"><h2 class="ch rv">'+p.h+'</h2>'+p.b+'</div>';s.querySelectorAll('.rv').forEach((x,n)=>x.style.setProperty('--i',n));bk.appendChild(s);return s});ok={};inited={}}
+function ui(){ind.textContent=(cur+1)+' / '+P.length;pv.disabled=cur<1;nx.disabled=cur>=P.length-1||!!(P[cur].g&&!ok[cur])}
+function go(n){if(n<0||n>=P.length)return;cur=n;L.forEach((s,k)=>{s.classList.toggle('turned',k<n);if(k!==n)s.classList.remove('show')});
+ setTimeout(()=>{if(cur!==n)return;L[n].classList.add('show');if(P[n].i&&!inited[n]){inited[n]=1;P[n].i(L[n],()=>{ok[n]=1;ui()})}},R?0:450);ui()}
+function open(){V++;try{localStorage.setItem('kv',V)}catch(e){}P=pages();build();document.body.classList.remove('closed');cov.classList.add('turned');go(0)}
+function close(){const n=cur,d=R?0:160;cur=-1;L.forEach(s=>s.classList.remove('show'));for(let k=n;k>=0;k--)setTimeout(()=>L[k].classList.remove('turned'),(n-k)*d);setTimeout(()=>{cov.classList.remove('turned');document.body.classList.add('closed');tag()},(n+1)*d)}
+$('#op').onclick=open;nx.onclick=()=>go(cur+1);pv.onclick=()=>go(cur-1);
+document.addEventListener('keydown',e=>{if(cur<0)return;if(e.key==='ArrowRight'&&!nx.disabled)go(cur+1);if(e.key==='ArrowLeft'&&!pv.disabled)go(cur-1)});
+let sx=0;bk.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+bk.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(cur>=0&&Math.abs(d)>80){if(d<0&&!nx.disabled)go(cur+1);else if(d>0&&!pv.disabled)go(cur-1)}});
+tag();
+})();
+</script>
+</body>
